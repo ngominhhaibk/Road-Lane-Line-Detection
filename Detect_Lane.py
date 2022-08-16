@@ -188,19 +188,25 @@ def draw_lane(img, warped, left_fit, right_fit, ploty, Minv):
 
 # cap = cv2.VideoCapture("project_video.mp4")
 cap = cv2.VideoCapture("challenge_video.mp4")
-
+i = 0
 while(cap.isOpened()):
     _, frame = cap.read() # _ is boolean
     if frame is None:
         break
     frame = frame.astype('uint8')
-    binary_warped, Minv = binary(frame)
+    # Cứ 2 frame thì xử lý 1 frame
+    if i == 0:
+        i = 1
+        binary_warped, Minv = binary(frame)
 
-    left_fit, right_fit, out_img, lefty, leftx, righty, rightx, ploty = fitlines(binary_warped)
+        left_fit, right_fit, out_img, lefty, leftx, righty, rightx, ploty = fitlines(binary_warped)
 
-    result_lane = draw_lane(frame, binary_warped, left_fit, right_fit, ploty, Minv)
+        result_lane = draw_lane(frame, binary_warped, left_fit, right_fit, ploty, Minv)
 
-    cv2.imshow("Road Lane Line Detection", result_lane)
+        cv2.imshow("Road Lane Line Detection", result_lane)
+    else :
+        i = 0
+        cv2.imshow("Road Lane Line Detection", result_lane)
 
     if cv2.waitKey(1) & 0xff == ord('q'):
         break
