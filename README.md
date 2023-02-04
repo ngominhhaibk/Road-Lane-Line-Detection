@@ -1,3 +1,8 @@
+**Only run:**
+```
+python Detect_Lane.py
+```
+
 ![image](https://user-images.githubusercontent.com/111002449/215966425-03bdab54-3bc9-4991-babb-1e4a5c3fc496.png)
 ![image](https://user-images.githubusercontent.com/111002449/215966440-0a569baf-e404-406b-aa5f-a9367784cbf6.png)
 ![image](https://user-images.githubusercontent.com/111002449/215966479-3407fd86-c54d-42da-adcb-9808ec513468.png)
